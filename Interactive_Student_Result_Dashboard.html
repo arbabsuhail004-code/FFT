@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Student Result Dashboard</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-image: url(https://www.alliance.edu.in/wp-content/uploads/2026/03/Alliance-central-Campus.png);
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: white;
+      }
+      /* NAVBAR */
+      nav {
+        padding: 20px 40px;
+        background: rgba(0, 0, 0, 0.65);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      nav h1 {
+        display: inline;
+        margin-left: 15px;
+      }
+      main {
+        display: flex;
+        justify-content: space-between;
+        padding: 50px;
+        gap: 30px;
+      }
+      /* FORM */
+      .details {
+        width: 50%;
+        background: rgba(0, 0, 0, 0.45);
+        padding: 30px;
+        border-radius: 15px;
+      }
+      .details h2 {
+        margin-top: 0;
+      }
+      label {
+        display: inline-block;
+        width: 150px;
+        margin: 12px 0;
+        font-weight: bold;
+      }
+      input[type='text'],
+      input[type='number'] {
+        width: 250px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+      }
+      /* BUTTONS */
+      button {
+        padding: 10px 25px;
+        margin-top: 20px;
+        margin-right: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 15px;
+      }
+
+      #resultBtn {
+        background-color: #2563eb;
+        color: white;
+      }
+
+      #resetBtn {
+        background-color: #ddd;
+        color: black;
+      }
+
+      button:hover {
+        opacity: 0.8;
+      }
+
+      /* RESULT */
+      #result {
+        width: 45%;
+        padding: 30px;
+        min-height: 300px;
+        background: rgba(0, 0, 0, 0.65);
+        border-left: 5px solid #2563eb;
+        border-radius: 10px;
+      }
+
+      /* COURSES */
+      .options {
+        margin: 0 50px 25px;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.55);
+        border-radius: 12px;
+      }
+      .options h3 {
+        margin-top: 0;
+      }
+      .options label {
+        width: auto;
+        margin-right: 30px;
+        font-weight: normal;
+      }
+      /* MOBILE */
+      @media (max-width: 700px) {
+        main {
+          flex-direction: column;
+          padding: 20px;
+        }
+        .details,
+        #result {
+          width: 100%;
+        }
+        .options {
+          margin-left: 20px;
+          margin-right: 20px;
+        }
+        input[type='text'],
+        input[type='number'] {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav>
+      <h1>Interactive Student Result Dashboard</h1>
+    </nav>
+
+    <!-- STUDENT DETAILS AND RESULT -->
+    <main>
+      <form class="details">
+        <h2>Student Details</h2>
+        <label>Student Name:</label>
+        <input type="text" id="name" />
+        <br />
+        <label>Student Reg:</label>
+        <input type="number" id="reg" />
+        <br />
+        <label>HTML Marks:</label>
+        <input type="number" id="html" />
+        <br />
+        <label>CSS Marks:</label>
+        <input type="number" id="css" />
+        <br />
+        <label>JS Marks:</label>
+        <input type="number" id="js" />
+        <br />
+        <button type="button" id="resultBtn" onclick="calculateResult()">
+          Result
+        </button>
+        <button type="reset" id="resetBtn">Reset</button>
+      </form>
+
+      <!-- RESULT -->
+      <div id="result">
+        <h2>Student Result</h2>
+        Result will appear here...
+      </div>
+    </main>
+
+    <!-- COURSES -->
+    <div class="options">
+      <h3>Courses</h3>
+      <label>
+        <input type="radio" name="course" value="MCA" />
+        MCA
+      </label>
+      <label>
+        <input type="radio" name="course" value="BCA" />
+        BCA
+      </label>
+    </div>
+
+    <!-- SPECIALIZATIONS -->
+    <div class="options">
+      <h3>Specializations</h3>
+      <label>
+        <input type="checkbox" value="AIML" />
+        AIML
+      </label>
+      <label>
+        <input type="checkbox" value="GAMEDEV" />
+        GAMEDEV
+      </label>
+      <label>
+        <input type="checkbox" value="CYBER" />
+        CYBER
+      </label>
+      <label>
+        <input type="checkbox" value="DATASCIENCE" />
+        DATA SCIENCE
+      </label>
+      <label>
+        GEN AI
+        <input type="checkbox" value="GENAI" />
+      </label>
+    </div>
+    <script>
+      function calculateResult() {
+        let name = document.getElementById('name').value;
+        let reg = document.getElementById('reg').value;
+        let html = Number(document.getElementById('html').value);
+        let css = Number(document.getElementById('css').value);
+        let js = Number(document.getElementById('js').value);
+        /* Check student details */
+        if (name == '' || reg == '') {
+          alert('Please enter all student details.');
+          return;
+        }
+        /* Check course */
+        let course = document.querySelector('input[name="course"]:checked');
+        if (!course) {
+          alert('Please select a course.');
+          return;
+        }
+        /* Check specialization */
+        let specialization = document.querySelector(
+          'input[type="checkbox"]:checked',
+        );
+        if (!specialization) {
+          alert('Please select a specialization.');
+          return;
+        }
+        /* Calculate total */
+        let total = html + css + js;
+        /* Calculate percentage */
+        let percentage = (total / 300) * 100;
+        /* Grade */
+        let grade;
+        if (percentage >= 80) {
+          grade = 'A';
+        } else if (percentage >= 60) {
+          grade = 'B';
+        } else if (percentage >= 40) {
+          grade = 'C';
+        } else {
+          grade = 'F';
+        }
+        /* Status */
+        let status;
+        if (percentage >= 40) {
+          status = 'PASS';
+        } else {
+          status = 'FAIL';
+        }
+        /* Display result */
+        document.getElementById('result').innerHTML =
+          '<h2>Student Result</h2>' +
+          'Student Name: ' +name +'<br>' +
+          'Student Reg: ' +reg +'<br>' +
+          'Course: ' +course.value +'<br><br>' +
+          'HTML Marks: ' +html +'<br>' +
+          'CSS Marks: ' +css +'<br>' +
+          'JS Marks: ' +js +'<br><br>' +
+          'Total Marks: ' +total +' / 300<br>' +
+          'Percentage: ' +percentage.toFixed(2) +'%<br>' +
+          'Grade: ' +grade +'<br>' +
+          'Status: ' +status;
+      }
+    </script>
+  </body>
+</html>
