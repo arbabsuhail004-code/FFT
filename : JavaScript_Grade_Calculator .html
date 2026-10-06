@@ -1,0 +1,72 @@
+<!doctype html> 
+<html lang="en"> 
+  <head> 
+    <meta charset="UTF-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />     <title>Student Result Dashboard</title> 
+ 
+    <style>       body {         text-align: center;         font-family: Arial, sans-serif; 
+      } 
+ 
+      form { 
+        width: 450px;         margin: 40px auto;         padding: 25px;         border: 2px solid black;         border-radius: 10px;         background-color: rgb(218, 241, 6); 
+      } 
+ 
+      h1 {         margin-bottom: 25px; 
+      } 
+ 
+      label {         display: inline-block;         width: 130px;         text-align: left;         margin: 8px; 
+      } 
+ 
+      input {         padding: 7px;         margin: 8px; 
+      } 
+ 
+      button {         padding: 8px 15px;         margin: 15px 5px;       } 
+ 
+      #para {         text-align: left;         border: 1px solid black;         padding: 15px;         margin-top: 20px; 
+      } 
+    </style> 
+  </head> 
+ 
+  <body> 
+    <form id="myForm"> 
+      <h1>Student Grade Calculator</h1> 
+      <label>Student Name:</label> 
+      <input type="text" name="n1" id="i1" /> 
+      <br /> 
+      <label>Student Reg:</label> 
+      <input type="number" name="n2" id="i2" /> 
+      <br /> 
+      <label>HTML Marks:</label> 
+      <input type="number" name="n3" id="i3" /> 
+      <br /> 
+      <label>CSS Marks:</label> 
+      <input type="number" name="n4" id="i4" /> 
+      <br /> 
+      <label>JS Marks:</label> 
+      <input type="number" name="n5" id="i5" /> 
+      <br /> 
+      <button type="button" onclick="Check()">Check Result</button> 
+      <button type="reset">Rest</button> 
+      <p id="para"></p> 
+    </form>     <script>       function Check() {         let n1 = document.getElementById('i1').value;         let n2 = document.getElementById('i2').value;         let n3 = Number(document.getElementById('i3').value);         let n4 = Number(document.getElementById('i4').value);         let n5 = Number(document.getElementById('i5').value);         let total = n3 + n4 + n5;         let avg = total / 3;         let percentage = (total / 300) * 100;         let grade;         if (avg >= 80) {           grade = 'A';         } else if (avg >= 60) {           grade = 'B';         } else if (avg >= 40) {           grade = 'D';         } else {           grade = 'F'; 
+        }         let status;         if (avg >= 40) {            status = 'Pass'; 
+           document.getElementById("myForm").style.backgroundColor = "red"; 
+        } else {              status = 'Fail'; 
+            document.getElementById("myForm").style.backgroundColor = "blue"; } 
+ 
+        document.getElementById('para').innerHTML = 
+          '<h2>Student Details</h2>' + 
+          'Student Name: ' + n1 + '<br>' + 
+          'Student Reg: ' + n2 + '<br>' + 
+          'HTML Marks: ' + n3 + '<br>' + 
+          'CSS Marks: ' + n4 + '<br>' + 
+          'JS Marks: ' + n5 + '<br>' + 
+          'Total Marks: ' + total + '/300<br>' + 
+          'Average: ' + avg.toFixed(2) + '<br>' + 
+          'Percentage: ' + percentage.toFixed(2) + '%<br>' + 
+          'Grade: ' + grade + '<br>' + 
+          'Status: ' + status; 
+      } 
+    </script> 
+</body> 
+</html >  
