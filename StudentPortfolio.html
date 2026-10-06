@@ -1,0 +1,234 @@
+<html>
+<head>
+    <title>My Portfolio</title>
+
+    <style>
+
+        
+        body {
+            font-family: Arial;
+            margin: 0;
+            background-color: lightgray;
+        }
+        nav {
+            background-color: rgb(79, 128, 196);
+            color: white;
+            padding: 20px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        nav h2 {
+            margin: 0;
+        }
+        nav ul {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            list-style: none;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+        .home {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 80px;
+            background-color: white;
+        }
+        .home h1 {
+            font-size: 40px;
+        }
+        .home {
+            color: rgb(107, 186, 33);
+        }
+        .photo {
+            display: grid;
+            place-items: center;
+            font-size: 100px;
+            animation: move 2s infinite alternate;
+        }
+        .about {
+            padding: 50px;
+            text-align: center;
+        }
+        .skills {
+            padding: 50px;
+            background-color: white;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .skill {
+            background-color: lightblue;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .skill:hover {
+            transform: scale(1.05);
+        }
+        .projects {
+            padding: 50px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .project {
+            background-color: white;
+            padding: 30px;
+        }
+        .project:hover {
+            transform: scale(1.05);
+        }
+        .contact {
+            background-color: white;
+            padding: 50px;
+            text-align: center;
+        }
+
+        @keyframes move {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(20px);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav,
+            .home,
+            .skills,
+            .projects {
+                grid-template-columns: 1;
+            }
+
+            nav ul {
+                grid-template-columns: 1;
+                gap: 10px;
+            }
+
+            .home {
+                text-align: center;
+            }
+
+            .skills,
+            .projects {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    
+    <nav>
+
+        <h2>My Portfolio</h2>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+        </ul>
+
+    </nav>
+
+
+    
+    <section class="home" id="home">
+
+        <div>
+            <h1>Hii, I am <span>Arbab</span></h1>
+
+            <p>
+                I am an MCA student interested in
+                web development and programming.
+            </p>
+
+        </div>
+
+    </section>
+
+    <section class="about" id="about">
+
+        <h2>About Me</h2>
+
+        <p>
+            I am currently pursuing MCA.
+            I like learning HTML, CSS, Python
+            and new technologies.
+        </p>
+
+    </section>
+
+    <section id="skills">
+
+        <h2 style="text-align:center;">My Skills</h2>
+
+        <div class="skills">
+
+            <div class="skill">
+                <h3>HTML</h3>
+                <p>Basic Web Development</p>
+            </div>
+
+            <div class="skill">
+                <h3>CSS</h3>
+                <p>Web Designing</p>
+            </div>
+
+            <div class="skill">
+                <h3>Python</h3>
+                <p>Programming</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="projects">
+
+        <h2 style="text-align:center;">My Projects</h2>
+
+        <div class="projects">
+
+            <div class="project">
+                <h3>Fake Job Detection</h3>
+                <p>A project to identify fake job postings.</p>
+            </div>
+
+            <div class="project">
+                <h3>College Event Website</h3>
+                <p> A responsive website created using HTML and CSS.</p>
+            </div>
+
+            <div class="project">
+                <h3>Book Recommendation</h3>
+                <p>An application for recommending books.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="contact">
+
+        <h2>Contact Me</h2>
+        <p>Email: arbab004@gmail.com</p>
+        <p>Phone: 9305657079</p>
+
+    </section>
+
+
+   
+
+</body>
+</html>
